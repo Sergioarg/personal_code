@@ -16,5 +16,8 @@ print(f'Shape of series: {sr.shape}')
 # Get data specific by index
 print(sr[[0, 1, 2, 3]])
 
-sr_new_index = pd.Series([10, 9, 8, 7], index=['a', 'b', 'hola', 'c'])
+sr_new_index = pd.Series([10, 9, 8, 7], index=['a', 'b', 'c', 'd'])
 print(sr_new_index)
+
+# Get data from specific index in other index
+print(sr[0:4])
