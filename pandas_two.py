@@ -13,8 +13,11 @@ dict_data = {
 }
 
 df = pd.DataFrame(dict_data, index=[
-    'ana', 'benito', 'camilo', 'daniel', 'erika', 'fabian', 'gabriela'])
+    'ana', 'benito', 'camilo', 'daniel', 'erika', 'fabian', 'gabriela'
+])
 
 df = pd.DataFrame(dict_data)
 
-breakpoint()
+print('Datos especificos\n', df.iloc[2, [1, 3, 4]])
+
+print('Para obtener todos los datos:\n ', df.iloc[:, [1, 3, 4]])
