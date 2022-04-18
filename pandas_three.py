@@ -20,8 +20,10 @@ shape_result = f'Rows: {shape[0]} | Columns: {shape[1]}'
 size_df = f'Size of df: {df_meteorites.size}'
 
 # Get description of the data frame
-pd.options.display.float_format = '{:,.1f}'.format()
 describe = df_meteorites.describe()
+# pd.options.display.float_format = '{:,.1f}'.format()
 
+# Gat info of types of the df
+info = df_meteorites.info()
 
 breakpoint()
