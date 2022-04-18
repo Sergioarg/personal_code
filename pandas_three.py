@@ -23,7 +23,13 @@ size_df = f'Size of df: {df_meteorites.size}'
 describe = df_meteorites.describe()
 # pd.options.display.float_format = '{:,.1f}'.format()
 
-# Gat info of types of the df
+# Get info of types of the df
 info = df_meteorites.info()
+
+# Get types of the variables
+dtypes = df_meteorites.dtypes
+
+# Convert dtypes
+convert_dtypes = df_meteorites.convert_dtypes().dtypes
 
 breakpoint()
