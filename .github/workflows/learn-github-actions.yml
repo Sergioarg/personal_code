@@ -18,4 +18,4 @@ jobs:
         pip install -r requirements.txt
     - name: Check breakpoints
       run: |
-        grep -r "breakpoint()"; echo $?
+        grep -r "breakpoint()" *.py; echo $?
