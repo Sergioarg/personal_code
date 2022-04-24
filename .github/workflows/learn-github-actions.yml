@@ -4,7 +4,7 @@ on:
   paths-ignore:
     - '.github/**'
 jobs:
-  check-bats-version:
+  basic-action:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -12,6 +12,10 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
     - name: Check breakpoints
       run: |
         grep -r "breakpoint()"; echo $?
