@@ -17,9 +17,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Find breakpoints
-      run: grep -r "breakpoint()" *.py
+      run: grep -r "breakpoint()" *.py; echo "Exit Status:" $?
       continue-on-error: true
-    - name: Current exit status
-      run: echo "Exit Status:" $?
     - name: End if find breakpoints
       run: if [ $? == 0 ]; then exit 1; fi
