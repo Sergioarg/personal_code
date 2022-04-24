@@ -19,5 +19,4 @@ jobs:
     - name: Check breakpoints
       run: |
         grep -r "breakpoint()" *.py; echo $?
-      if: $? == 0
-      cancel-in-progress: true
+      if: ${{ $? == 0 }}
