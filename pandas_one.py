@@ -20,5 +20,4 @@ sr_new_index = pd.Series([10, 9, 8, 7], index=['a', 'b', 'c', 'd'])
 print(sr_new_index)
 
 # Get data from specific index in other index
-print(sr[0:4])
-
+print(sr[0:4], 2)
