@@ -21,3 +21,5 @@ df = pd.DataFrame(dict_data)
 print('Datos especificos\n', df.iloc[2, [1, 3, 4]])
 
 print('Para obtener todos los datos:\n ', df.iloc[:, [1, 3, 4]])
+
+breakpoint()
