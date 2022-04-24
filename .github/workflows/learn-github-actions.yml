@@ -2,3 +2,12 @@ on:
   push:
     branches:
     - master
+jobs:
+  check-braeakpoints:
+    runs-on: ubuntu-lasted
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+    with:
+      - run: grep -r "breakpoint()"; echo $?
+
