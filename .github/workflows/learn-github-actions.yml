@@ -19,14 +19,10 @@ jobs:
     - name: Check breakpoints
       run: grep -r "breakpoint()" *.py; echo $?
       id: grep
-      continue-on-error: true
     - name: Check exit staus of grep
       run: echo $?
       id: status
-      continue-on-error: true
     - name: end
       if: steps.status.outcome == 1
       run: exit 1
-
-
-      
+      continue-on-error: false
