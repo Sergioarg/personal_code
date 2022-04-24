@@ -1,5 +1,6 @@
 name: learn-github-actions
-on: [ push ]
+on:
+ push:
   paths-ignore:
     - '.github/**'
 jobs:
@@ -12,5 +13,5 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Check breakpoints
-    run: |
-      grep -r "breakpoint()"; echo $?
+      run: |
+        grep -r "breakpoint()"; echo $?
