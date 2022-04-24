@@ -18,11 +18,6 @@ jobs:
         pip install -r requirements.txt
     - name: Check breakpoints
       run: grep -r "breakpoint()" *.py; echo $?
-      id: grep
-    - name: Check exit staus of grep
-      run: echo $?
-      id: status
-    - name: end
-      if: steps.status.outcome == 1
+      id: grep_error
+      if: steps.grep_error.outcome == 0
       run: exit 1
-      continue-on-error: false
