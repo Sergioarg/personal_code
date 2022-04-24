@@ -1,11 +1,16 @@
-on:
-  push:
-    branches:
-    - master
+name: learn-github-actions
+on: [ push ]
+  paths-ignore:
+    - '.github/**'
 jobs:
-  check-braeakpoints:
-    runs-on: ubuntu-lasted
+  check-bats-version:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-    - run: grep -r "breakpoint()"; echo $?
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Check breakpoints
+    run: |
+      grep -r "breakpoint()"; echo $?
