@@ -19,5 +19,7 @@ jobs:
     - name: Check breakpoints
       run: grep -r "breakpoint()" *.py; echo $?
       id: grep_error
+    - name: end by breakpoints
       if: steps.grep_error.outcome == 0
       run: exit 1
+      # continue-on-error: false
