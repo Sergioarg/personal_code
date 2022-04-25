@@ -2,7 +2,7 @@ name: learn-github-actions
 on:
  push:
   paths-ignore:
-    - '.github/**'
+    - '.github/workflows'
 jobs:
   basic-env:
     runs-on: ubuntu-latest
