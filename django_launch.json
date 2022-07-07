@@ -1,0 +1,24 @@
+{
+    "configurations": [
+      {
+        "name": "Python: Django",
+        "type": "python",
+        "request": "launch",
+        "program": "manage.py",
+        "args": ["runserver"],
+        "django": true,
+        "justMyCode": true
+      },
+      {
+          "name": "Python: Debug Tests",
+          "type": "python",
+          "request": "launch",
+          "program": "manage.py",
+          "purpose": ["debug-test"],
+          "args": ["test"],
+          "console": "integratedTerminal",
+          "justMyCode": false
+      }
+    ]
+  }
+  
