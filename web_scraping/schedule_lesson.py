@@ -30,8 +30,8 @@ sleep(3)
 #       '\n\033[94mEnd time: \033[0m', end_hour)
 # diff_seconds = (end_hour - time_now).total_seconds()
 
-user = 'change_user'
-password = 'change correct'
+user = '1000162785'
+password = 'SmartSchool'
 
 # wait.until(EC.presence_of_element_located((By.TAG_NAME, 'iframe')))
 
@@ -45,7 +45,6 @@ driver.find_element(By.XPATH, input_user).send_keys(user)
 driver.find_element(By.XPATH, input_password).send_keys(password)
 driver.find_element(By.XPATH, confirm_button).click()
 # wait to charge page
-
 
 main_page = driver.current_window_handle
 
@@ -68,7 +67,7 @@ sleep(5)
 programar_clases_iframe = driver.find_element(By.XPATH, '//*[@id="gxp0_ifrm"]')
 driver.switch_to.frame(programar_clases_iframe)
 
-clase_2_button = '//*[@id="Grid1ContainerRow_0010"]/td[6]'
+clase_2_button = '//*[@id="Grid1ContainerRow_0012"]/td[6]'
 driver.find_element(By.XPATH, clase_2_button).click()
 
 asignar_button = '//*[@id="BUTTON1"]'
@@ -93,11 +92,21 @@ sleep(5)
 
 dia_dropdown = '//*[@id="vDIA"]'
 driver.find_element(By.XPATH, dia_dropdown).click()
+driver.find_element(By.XPATH, dia_dropdown).click()
 
-dia_dos = '//*[@id="vDIA"]/option[2]'
-driver.find_element(By.XPATH, dia_dos).click()
+dia_selection = '//*[@id="vDIA"]/option[2]'
+driver.find_element(By.XPATH, dia_selection).click()
 
 sleep(5)
+
+ultima_clase = '//*[@id="span_HORSEDHIN_0006"]'
+driver.find_element(By.XPATH, ultima_clase).click()
+
+confirmar_button = '//*[@id="BUTTON1"]'
+driver.find_element(By.XPATH, confirmar_button).click()
+
+sleep(5)
+print("Clase programada")
 
 # Close drivers
 driver.close()
