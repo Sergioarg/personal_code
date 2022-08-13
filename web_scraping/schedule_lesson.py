@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-# Python
+from datetime import datetime
 from time import sleep
 
 # Agent ids ───────────────────────────────────────────────────────────────────
@@ -15,98 +15,97 @@ url = "https://schoolpack.smart.edu.co/idiomas/alumnos.aspx"
 # Options for chrome ──────────────────────────────────────────────────────────
 coptions = webdriver.ChromeOptions()
 coptions.add_argument('--ignore-certificate-errors')
-# coptions.add_experimental_option("excludeSwitches", ["enable-logging"])
 driver = webdriver.Chrome(options=coptions)
 wait = WebDriverWait(driver, 240)
 
 # Open url. ────────────────────────────────────────────────────────────
 driver.get(url)
 
-sleep(3)
-# Get diff in seconds
-# time_now = datetime.now()
-# end_hour = time_now.replace(hour=21, minute=00, second=00)
-# print('\033[94mStart time: \033[0m', time_now,
-#       '\n\033[94mEnd time: \033[0m', end_hour)
-# diff_seconds = (end_hour - time_now).total_seconds()
-
 user = '1000162785'
 password = 'SmartSchool'
 
-# wait.until(EC.presence_of_element_located((By.TAG_NAME, 'iframe')))
 
-# LOGIN
-
+# LOGIN ON SCHOOL PACK  ──────────────────────────────────────────────────────
 input_user = '//*[@id="vUSUCOD"]'
 input_password = '//*[@id="vPASS"]'
 confirm_button = '//*[@id="BUTTON1"]'
 
+wait.until(EC.presence_of_element_located((By.XPATH, input_user)))
+
 driver.find_element(By.XPATH, input_user).send_keys(user)
 driver.find_element(By.XPATH, input_password).send_keys(password)
 driver.find_element(By.XPATH, confirm_button).click()
-# wait to charge page
 
 main_page = driver.current_window_handle
 
-sleep(3)
-
+# Change before click on button of programcion
 programcion_button = '//*[@id="IMAGE18"]'
+wait.until(EC.presence_of_element_located((By.XPATH, programcion_button)))
 driver.find_element(By.XPATH, programcion_button).click()
 
-sleep(5)
+# START TO SELECT SPECIFIC CLASS
 study_plan = '//*[@id="W0030Grid1ContainerRow_0001"]'
-
+wait.until(EC.presence_of_element_located((By.XPATH, study_plan)))
 driver.find_element(By.XPATH, study_plan).click()
 
 iniciar_button = '//*[@id="W0030BUTTON1"]'
-
+wait.until(EC.presence_of_element_located((By.XPATH, iniciar_button)))
 driver.find_element(By.XPATH, iniciar_button).click()
 
-sleep(5)
 # Swith to first pop-up "Programar clases"
-programar_clases_iframe = driver.find_element(By.XPATH, '//*[@id="gxp0_ifrm"]')
+first_iframe = '//*[@id="gxp0_ifrm"]'
+wait.until(EC.presence_of_element_located((By.XPATH, first_iframe)))
+programar_clases_iframe = driver.find_element(By.XPATH, first_iframe)
 driver.switch_to.frame(programar_clases_iframe)
 
+# Change this XPATH for every class
 clase_2_button = '//*[@id="Grid1ContainerRow_0012"]/td[6]'
 driver.find_element(By.XPATH, clase_2_button).click()
 
 asignar_button = '//*[@id="BUTTON1"]'
 driver.find_element(By.XPATH, asignar_button).click()
 
-sleep(5)
-
 # Return to main main page
 driver.switch_to.default_content()
 
-selecion_clases_iframe = driver.find_element(By.XPATH, '//*[@id="gxp1_ifrm"]')
+# SELECT sede, dia and hora of the class
+second_iframe = '//*[@id="gxp1_ifrm"]'
+wait.until(EC.presence_of_element_located((By.XPATH, second_iframe)))
+selecion_clases_iframe = driver.find_element(By.XPATH, second_iframe)
 driver.switch_to.frame(selecion_clases_iframe)
 
+# Display dropdown of sede
 sede_dropdown = '//*[@id="vREGCONREG"]'
 driver.find_element(By.XPATH, sede_dropdown).click()
 
+# Select CALIMA sede in the dropdown, change the number acording the class
 calima_option = '//*[@id="vREGCONREG"]/option[14]'
 driver.find_element(By.XPATH, calima_option).click()
 
-
-sleep(5)
-
+# Display dropdown of day
 dia_dropdown = '//*[@id="vDIA"]'
-driver.find_element(By.XPATH, dia_dropdown).click()
 driver.find_element(By.XPATH, dia_dropdown).click()
 
 dia_selection = '//*[@id="vDIA"]/option[2]'
+
+driver.find_element(By.XPATH, dia_selection).click()
 driver.find_element(By.XPATH, dia_selection).click()
 
-sleep(5)
-
+# Select the last clase of the day
+current_day = datetime.today().isoweekday()
+# If day are Saturday Select another hours of class
+# if current_day == 5:
+#     # Select the last clase of the day
+#     clase_10_am = '//*[@id="span_HORSEDHIN_0003"]'
+# else:
 ultima_clase = '//*[@id="span_HORSEDHIN_0006"]'
+wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
 driver.find_element(By.XPATH, ultima_clase).click()
 
 confirmar_button = '//*[@id="BUTTON1"]'
 driver.find_element(By.XPATH, confirmar_button).click()
 
 sleep(5)
-print("Clase programada")
 
 # Close drivers
 driver.close()
