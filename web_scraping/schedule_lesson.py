@@ -98,7 +98,7 @@ current_day = datetime.today().isoweekday()
 #     # Select the last clase of the day
 #     clase_10_am = '//*[@id="span_HORSEDHIN_0003"]'
 # else:
-ultima_clase = '//*[@id="span_HORSEDHIN_0006"]'
+ultima_clase = '//*[@id="span_HORSEDCLA_0010"]'
 wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
 driver.find_element(By.XPATH, ultima_clase).click()
 
