@@ -59,7 +59,17 @@ programar_clases_iframe = driver.find_element(By.XPATH, first_iframe)
 driver.switch_to.frame(programar_clases_iframe)
 
 # Change this XPATH for every class
-clase_2_button = '//*[@id="Grid1ContainerRow_0012"]/td[6]'
+
+clases = {
+    'clase_4': '//*[@id="Grid1ContainerRow_0012"]/td[6]',
+    'clase_5': '//*[@id="Grid1ContainerRow_0012"]/td[7]',
+    'clase_6': '//*[@id="Grid1ContainerRow_0012"]/td[8]',
+    'clase_7': '//*[@id="Grid1ContainerRow_0012"]/td[9]',
+    'clase_8': '//*[@id="Grid1ContainerRow_0012"]/td[10]',
+    'clase_9': '//*[@id="Grid1ContainerRow_0012"]/td[11]'
+}
+
+clase_2_button = clases['clase_4']
 driver.find_element(By.XPATH, clase_2_button).click()
 
 asignar_button = '//*[@id="BUTTON1"]'
