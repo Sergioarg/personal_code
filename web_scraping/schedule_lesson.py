@@ -69,7 +69,7 @@ clases = {
     'clase_9': '//*[@id="Grid1ContainerRow_0012"]/td[11]'
 }
 
-clase_2_button = clases['clase_4']
+clase_2_button = clases['clase_5']
 driver.find_element(By.XPATH, clase_2_button).click()
 
 asignar_button = '//*[@id="BUTTON1"]'
