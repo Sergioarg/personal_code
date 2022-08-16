@@ -23,7 +23,7 @@ driver.get(url)
 
 user = '1000162785'
 password = 'SmartSchool'
-
+current_day = datetime.today().strftime("%Y-%m-%d")
 
 # LOGIN ON SCHOOL PACK  ──────────────────────────────────────────────────────
 input_user = '//*[@id="vUSUCOD"]'
@@ -59,19 +59,30 @@ programar_clases_iframe = driver.find_element(By.XPATH, first_iframe)
 driver.switch_to.frame(programar_clases_iframe)
 
 # Change this XPATH for every class
-
 clases = {
-    'clase_4': '//*[@id="Grid1ContainerRow_0012"]/td[6]',
     'clase_5': '//*[@id="Grid1ContainerRow_0013"]/td[6]',
-    'clase_6': '//*[@id="Grid1ContainerRow_0012"]/td[8]',
-    'clase_7': '//*[@id="Grid1ContainerRow_0012"]/td[9]',
-    'clase_8': '//*[@id="Grid1ContainerRow_0012"]/td[10]',
-    'clase_9': '//*[@id="Grid1ContainerRow_0012"]/td[11]'
+    'clase_6': '//*[@id="Grid1ContainerRow_0014"]/td[6]',
+    'clase_7': '//*[@id="Grid1ContainerRow_0015"]/td[6]',
+    'clase_8': '//*[@id="Grid1ContainerRow_0016"]/td[6]',
+    'clase_9': '//*[@id="Grid1ContainerRow_0017"]/td[6]'
 }
 
-clase_2_button = clases['clase_5']
-driver.find_element(By.XPATH, clase_2_button).click()
+# ! Change dates acording days necesary of class
+if current_day == '2022-08-17':
+    sleep(3)
+    clase_row = clases['clase_5']
+elif current_day == '2022-08-18':
+    sleep(3)
+    clase_row = clases['clase_6']
+else:
+    driver.close()
+    driver.quit()
 
+# Click on class selected
+wait.until(EC.presence_of_element_located((By.XPATH, clase_row)))
+driver.find_element(By.XPATH, clase_row).click()
+
+# Click on 'Asignar' button
 asignar_button = '//*[@id="BUTTON1"]'
 driver.find_element(By.XPATH, asignar_button).click()
 
@@ -101,13 +112,6 @@ dia_selection = '//*[@id="vDIA"]/option[2]'
 driver.find_element(By.XPATH, dia_selection).click()
 driver.find_element(By.XPATH, dia_selection).click()
 
-# Select the last clase of the day
-current_day = datetime.today().isoweekday()
-# If day are Saturday Select another hours of class
-# if current_day == 5:
-#     # Select the last clase of the day
-#     clase_10_am = '//*[@id="span_HORSEDHIN_0003"]'
-# else:
 ultima_clase = '//*[@id="span_HORSEDCLA_0010"]'
 wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
 driver.find_element(By.XPATH, ultima_clase).click()
