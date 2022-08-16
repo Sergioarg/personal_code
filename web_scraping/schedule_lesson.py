@@ -62,7 +62,7 @@ driver.switch_to.frame(programar_clases_iframe)
 
 clases = {
     'clase_4': '//*[@id="Grid1ContainerRow_0012"]/td[6]',
-    'clase_5': '//*[@id="Grid1ContainerRow_0012"]/td[7]',
+    'clase_5': '//*[@id="Grid1ContainerRow_0013"]/td[6]',
     'clase_6': '//*[@id="Grid1ContainerRow_0012"]/td[8]',
     'clase_7': '//*[@id="Grid1ContainerRow_0012"]/td[9]',
     'clase_8': '//*[@id="Grid1ContainerRow_0012"]/td[10]',
