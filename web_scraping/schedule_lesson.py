@@ -68,12 +68,12 @@ clases = {
 }
 
 # ! Change dates acording days necesary of class
-if current_day == '2022-08-17':
-    sleep(3)
-    clase_row = clases['clase_5']
-elif current_day == '2022-08-18':
+if current_day == '2022-08-18':
     sleep(3)
     clase_row = clases['clase_6']
+elif current_day == '2022-08-19':
+    sleep(3)
+    clase_row = clases['clase_7']
 else:
     driver.close()
     driver.quit()
@@ -112,7 +112,7 @@ dia_selection = '//*[@id="vDIA"]/option[2]'
 driver.find_element(By.XPATH, dia_selection).click()
 driver.find_element(By.XPATH, dia_selection).click()
 
-ultima_clase = '//*[@id="span_HORSEDCLA_0010"]'
+ultima_clase = '//*[@id="span_HORSEDCLA_0011"]'
 wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
 driver.find_element(By.XPATH, ultima_clase).click()
 
@@ -120,6 +120,7 @@ confirmar_button = '//*[@id="BUTTON1"]'
 driver.find_element(By.XPATH, confirmar_button).click()
 
 sleep(5)
+print('Class scheduled')
 
 # Close drivers
 driver.close()
