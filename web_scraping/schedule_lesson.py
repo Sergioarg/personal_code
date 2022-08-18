@@ -60,7 +60,6 @@ driver.switch_to.frame(programar_clases_iframe)
 
 # Change this XPATH for every class
 clases = {
-    'clase_5': '//*[@id="Grid1ContainerRow_0013"]/td[6]',
     'clase_6': '//*[@id="Grid1ContainerRow_0014"]/td[6]',
     'clase_7': '//*[@id="Grid1ContainerRow_0015"]/td[6]',
     'clase_8': '//*[@id="Grid1ContainerRow_0016"]/td[6]',
