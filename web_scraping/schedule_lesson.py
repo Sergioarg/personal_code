@@ -68,12 +68,15 @@ clases = {
 }
 
 # ! Change dates acording days necesary of class
-if current_day == '2022-08-18':
+if current_day == '2022-08-21':
     sleep(3)
     clase_row = clases['clase_6']
-elif current_day == '2022-08-19':
+elif current_day == '2022-08-22':
     sleep(3)
     clase_row = clases['clase_7']
+elif current_day == '2022-08-23':
+    sleep(3)
+    clase_row = clases['clase_8']
 else:
     driver.close()
     driver.quit()
@@ -82,6 +85,7 @@ else:
 wait.until(EC.presence_of_element_located((By.XPATH, clase_row)))
 driver.find_element(By.XPATH, clase_row).click()
 
+sleep(3)
 # Click on 'Asignar' button
 asignar_button = '//*[@id="BUTTON1"]'
 driver.find_element(By.XPATH, asignar_button).click()
@@ -112,7 +116,7 @@ dia_selection = '//*[@id="vDIA"]/option[2]'
 driver.find_element(By.XPATH, dia_selection).click()
 driver.find_element(By.XPATH, dia_selection).click()
 
-ultima_clase = '//*[@id="span_HORSEDCLA_0011"]'
+ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
 wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
 driver.find_element(By.XPATH, ultima_clase).click()
 
