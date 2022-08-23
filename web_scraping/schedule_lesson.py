@@ -59,7 +59,7 @@ programar_clases_iframe = driver.find_element(By.XPATH, first_iframe)
 driver.switch_to.frame(programar_clases_iframe)
 
 # Change to pendientes por progrmar
-estado_clases_dropdown = '//*[@id="vTPEAPROBO"]'
+""" estado_clases_dropdown = '//*[@id="vTPEAPROBO"]'
 wait.until(EC.presence_of_element_located((By.XPATH, estado_clases_dropdown)))
 driver.find_element(By.XPATH, estado_clases_dropdown).click()
 
@@ -67,28 +67,23 @@ driver.find_element(By.XPATH, estado_clases_dropdown).click()
 pendientes_por_programar_option = '//*[@id="vTPEAPROBO"]/option[3]'
 wait.until(EC.presence_of_element_located((By.XPATH, pendientes_por_programar_option)))
 driver.find_element(By.XPATH, pendientes_por_programar_option).click()
+ """
 
-sleep(3)
 # Change this XPATH for every class
 clases = {
-    'clase_8': '//*[@id="Grid1ContainerRow_0001"]/td[6]',
-    'clase_9': '//*[@id="Grid1ContainerRow_0002"]/td[6]',
-    'quiz_A1': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-    'smart_zone': '//*[@id="Grid1ContainerRow_0004"]/td[6]',
-    'clase_11': '//*[@id="Grid1ContainerRow_0005"]/td[6]',
-    'clase_12': '//*[@id="Grid1ContainerRow_0006"]/td[6]',
-    'clase_13': '//*[@id="Grid1ContainerRow_0007"]/td[6]',
-    'clase_14': '//*[@id="Grid1ContainerRow_0008"]/td[6]',
-    'clase_15': '//*[@id="Grid1ContainerRow_0009"]/td[6]',
+    'clase_9': '//*[@id="Grid1ContainerRow_0017"]/td[6]',
+    'quiz_A1': '//*[@id="Grid1ContainerRow_0018"]/td[6]',
+    'smart_zone': '//*[@id="Grid1ContainerRow_0019"]/td[6]',
+    'clase_10': '//*[@id="Grid1ContainerRow_0020"]/td[6]',
 }
 
 # ! Change dates acording days necesary of class
 if current_day == '2022-08-23':
     sleep(3)
-    clase_row = clases['clase_8']
-elif current_day == '2022-08-24':
-    sleep(3)
     clase_row = clases['clase_9']
+elif current_day == '2022-08-28':
+    sleep(3)
+    clase_row = clases['quiz_A1']
 else:
     driver.close()
     driver.quit()
@@ -108,6 +103,7 @@ driver.switch_to.default_content()
 # SELECT sede, dia and hora of the class
 second_iframe = '//*[@id="gxp1_ifrm"]'
 wait.until(EC.presence_of_element_located((By.XPATH, second_iframe)))
+sleep(3)
 selecion_clases_iframe = driver.find_element(By.XPATH, second_iframe)
 driver.switch_to.frame(selecion_clases_iframe)
 
