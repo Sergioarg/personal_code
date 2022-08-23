@@ -78,7 +78,7 @@ clases = {
 }
 
 # ! Change dates acording days necesary of class
-if current_day == '2022-08-23':
+if current_day == '2022-08-24':
     sleep(3)
     clase_row = clases['clase_9']
 elif current_day == '2022-08-28':
