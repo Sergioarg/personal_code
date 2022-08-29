@@ -58,32 +58,34 @@ wait.until(EC.presence_of_element_located((By.XPATH, first_iframe)))
 programar_clases_iframe = driver.find_element(By.XPATH, first_iframe)
 driver.switch_to.frame(programar_clases_iframe)
 
-# Change to pendientes por progrmar
-""" estado_clases_dropdown = '//*[@id="vTPEAPROBO"]'
-wait.until(EC.presence_of_element_located((By.XPATH, estado_clases_dropdown)))
-driver.find_element(By.XPATH, estado_clases_dropdown).click()
+# Boton de siguiente
+# button_siguiente = '//*[@id="Grid1ContainerTbl"]/tfoot/tr/td/div/button[3]'
+# wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
+# driver.find_element(By.XPATH, button_siguiente).click()
 
-# Select pendientes por programar
-pendientes_por_programar_option = '//*[@id="vTPEAPROBO"]/option[3]'
-wait.until(EC.presence_of_element_located((By.XPATH, pendientes_por_programar_option)))
-driver.find_element(By.XPATH, pendientes_por_programar_option).click()
- """
 
 # Change this XPATH for every class
 clases = {
-    'clase_9': '//*[@id="Grid1ContainerRow_0017"]/td[6]',
     'quiz_A1': '//*[@id="Grid1ContainerRow_0018"]/td[6]',
     'smart_zone': '//*[@id="Grid1ContainerRow_0019"]/td[6]',
     'clase_10': '//*[@id="Grid1ContainerRow_0020"]/td[6]',
+    'clase_11': '//*[@id="Grid1ContainerRow_0001"]/td[6]',
+    'clase_12': '//*[@id="Grid1ContainerRow_0002"]/td[6]',
+    'clase_13': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+    'clase_14': '//*[@id="Grid1ContainerRow_0004"]/td[6]',
+    'clase_15': '//*[@id="Grid1ContainerRow_0005"]/td[6]'
 }
 
 # ! Change dates acording days necesary of class
-if current_day == '2022-08-21':
-    sleep(3)
-    clase_row = clases['quiz_A1']
-elif current_day == '2022-08-29':
+if current_day == '2022-08-29':
     sleep(3)
     clase_row = clases['smart_zone']
+elif current_day == '2022-08-30':
+    sleep(3)
+    clase_row = clases['clase_10']
+elif current_day == '2022-08-31':
+    sleep(3)
+    clase_row = clases['clase_11']
 else:
     driver.close()
     driver.quit()
