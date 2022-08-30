@@ -77,13 +77,13 @@ clases = {
 }
 
 # ! Change dates acording days necesary of class
-if current_day == '2022-08-29':
+if current_day == '2022-08-31':
     sleep(3)
     clase_row = clases['smart_zone']
-elif current_day == '2022-08-30':
+elif current_day == '2022-09-01':
     sleep(3)
     clase_row = clases['clase_10']
-elif current_day == '2022-08-31':
+elif current_day == '2022-09-05':
     sleep(3)
     clase_row = clases['clase_11']
 else:
