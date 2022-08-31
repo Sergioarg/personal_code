@@ -79,7 +79,7 @@ clases = {
 # ! Change dates acording days necesary of class
 if current_day == '2022-08-31':
     sleep(3)
-    clase_row = clases['smart_zone']
+    clase_row = clases['quiz_A1']
 elif current_day == '2022-09-01':
     sleep(3)
     clase_row = clases['clase_10']
