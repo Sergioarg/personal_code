@@ -59,14 +59,14 @@ programar_clases_iframe = driver.find_element(By.XPATH, first_iframe)
 driver.switch_to.frame(programar_clases_iframe)
 
 # Boton de siguiente
-# button_siguiente = '//*[@id="Grid1ContainerTbl"]/tfoot/tr/td/div/button[3]'
-# wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
-# driver.find_element(By.XPATH, button_siguiente).click()
+if current_day == '2022-09-05' or current_day == '2022-09-06':
+    button_siguiente = '//*[@id="Grid1ContainerTbl"]/tfoot/tr/td/div/button[3]'
+    wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
+    driver.find_element(By.XPATH, button_siguiente).click()
 
 
 # Change this XPATH for every class
 clases = {
-    'quiz_A1': '//*[@id="Grid1ContainerRow_0018"]/td[6]',
     'smart_zone': '//*[@id="Grid1ContainerRow_0019"]/td[6]',
     'clase_10': '//*[@id="Grid1ContainerRow_0020"]/td[6]',
     'clase_11': '//*[@id="Grid1ContainerRow_0001"]/td[6]',
@@ -77,15 +77,18 @@ clases = {
 }
 
 # ! Change dates acording days necesary of class
-if current_day == '2022-08-31':
-    sleep(3)
-    clase_row = clases['quiz_A1']
-elif current_day == '2022-09-11':
+if current_day == '2022-09-04':
     sleep(3)
     clase_row = clases['clase_10']
 elif current_day == '2022-09-05':
     sleep(3)
     clase_row = clases['clase_11']
+elif current_day == '2022-09-06':
+    sleep(3)
+    clase_row = clases['clase_12']
+elif current_day == '2022-09-07':
+    sleep(3)
+    clase_row = clases['clase_13']
 else:
     driver.close()
     driver.quit()
@@ -127,7 +130,7 @@ driver.find_element(By.XPATH, dia_selection).click()
 driver.find_element(By.XPATH, dia_selection).click()
 
 ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
-penultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
+# penultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
 # !Change again for other data
 wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
 driver.find_element(By.XPATH, ultima_clase).click()
