@@ -130,7 +130,7 @@ ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
 penultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
 # !Change again for other data
 wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
-driver.find_element(By.XPATH, penultima_clase).click()
+driver.find_element(By.XPATH, ultima_clase).click()
 
 confirmar_button = '//*[@id="BUTTON1"]'
 driver.find_element(By.XPATH, confirmar_button).click()
