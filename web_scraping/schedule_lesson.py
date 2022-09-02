@@ -129,10 +129,10 @@ dia_selection = '//*[@id="vDIA"]/option[2]'
 driver.find_element(By.XPATH, dia_selection).click()
 driver.find_element(By.XPATH, dia_selection).click()
 
-if week_day == 4:
-    ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
-else:
-    ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
+# if week_day == 4:
+ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
+# else:
+#     ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
 
 # !Change again for other data
 wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
