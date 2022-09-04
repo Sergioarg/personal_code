@@ -83,13 +83,13 @@ def schedule_clases():
     elif current_day == 'Wednesday':
         clase_row = clases['clase_14']
     elif current_day == 'Sunday':
-        clase_row = clases['clase_13']
+        clase_row = clases['clase_17']
     else:
         driver.close()
         driver.quit()
 
     sleep(3)
-    # Click on class selected
+    # Click on class selecte
     wait.until(EC.presence_of_element_located((By.XPATH, clase_row)))
     driver.find_element(By.XPATH, clase_row).click()
 
