@@ -64,6 +64,7 @@ def schedule_clases():
     wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
     driver.find_element(By.XPATH, button_siguiente).click()
 
+    sleep(3)
     # Change this XPATH for every class
     clases = {
         'clase_12': '//*[@id="Grid1ContainerRow_0002"]/td[11]',
@@ -77,7 +78,7 @@ def schedule_clases():
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_12']
+        clase_row = clases['clase_15']
     elif current_day == 'Tuesday':
         clase_row = clases['clase_13']
     elif current_day == 'Wednesday':
