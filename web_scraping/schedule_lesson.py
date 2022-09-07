@@ -78,11 +78,11 @@ def schedule_clases():
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_15']
+        clase_row = clases['clase_18']
     elif current_day == 'Tuesday':
         clase_row = clases['clase_13']
     elif current_day == 'Wednesday':
-        clase_row = clases['clase_14']
+        clase_row = clases['clase_16']
     elif current_day == 'Sunday':
         clase_row = clases['clase_17']
     else:
@@ -126,10 +126,10 @@ def schedule_clases():
     driver.find_element(By.XPATH, dia_selection).click()
     driver.find_element(By.XPATH, dia_selection).click()
 
-    # if week_day == 4:
-    ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
-    # else:
-    #     ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
+    if current_day == 'Wednesday':
+        ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
+    else:
+        ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
 
     # !Change again for other data
     wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
