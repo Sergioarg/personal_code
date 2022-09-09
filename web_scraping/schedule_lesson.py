@@ -67,20 +67,15 @@ def schedule_clases():
     sleep(3)
     # Change this XPATH for every class
     clases = {
-        'clase_12': '//*[@id="Grid1ContainerRow_0002"]/td[11]',
-        'clase_13': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-        'clase_14': '//*[@id="Grid1ContainerRow_0004"]/td[6]',
-        'clase_15': '//*[@id="Grid1ContainerRow_0005"]/td[6]',
-        'clase_16': '//*[@id="Grid1ContainerRow_0006"]/td[11]',
         'clase_17': '//*[@id="Grid1ContainerRow_0007"]/td[11]',
         'clase_18': '//*[@id="Grid1ContainerRow_0008"]/td[11]',
     }
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_18']
+        clase_row = clases['clase_17']
     elif current_day == 'Tuesday':
-        clase_row = clases['clase_13']
+        clase_row = clases['clase_18']
     elif current_day == 'Wednesday':
         clase_row = clases['clase_16']
     elif current_day == 'Sunday':
