@@ -11,7 +11,6 @@ from time import sleep
 # Options for chrome ──────────────────────────────────────────────────────────
 coptions = webdriver.ChromeOptions()
 coptions.add_argument('--ignore-certificate-errors')
-coptions.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(options=coptions)
 wait = WebDriverWait(driver, 240)
 
@@ -65,10 +64,9 @@ def schedule_clases():
     wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
     driver.find_element(By.XPATH, button_siguiente).click()
 
-    sleep(3)
+    sleep(5)
     # Change this XPATH for every class
     clases = {
-        'clase_18': '//*[@id="Grid1ContainerRow_0008"]/td[11]',
         'quiz_a1': '//*[@id="Grid1ContainerRow_0009"]/td[11]',
         'clase_19': '//*[@id="Grid1ContainerRow_0011"]/td[11]',
         'clase_20': '//*[@id="Grid1ContainerRow_0012"]/td[11]',
@@ -83,13 +81,13 @@ def schedule_clases():
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_18']
+        clase_row = clases['clase_19']
     elif current_day == 'Tuesday':
-        clase_row = clases['clase_18']
+        clase_row = clases['clase_20']
     elif current_day == 'Wednesday':
-        clase_row = clases['clase_16']
+        clase_row = clases['quiz_a1']
     elif current_day == 'Sunday':
-        clase_row = clases['clase_27']
+        clase_row = clases['clase_22']
     else:
         driver.close()
         driver.quit()
