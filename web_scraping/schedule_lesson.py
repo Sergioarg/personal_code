@@ -67,7 +67,6 @@ def schedule_clases():
     sleep(5)
     # Change this XPATH for every class
     clases = {
-        'quiz_a1': '//*[@id="Grid1ContainerRow_0009"]/td[11]',
         'clase_19': '//*[@id="Grid1ContainerRow_0011"]/td[11]',
         'clase_20': '//*[@id="Grid1ContainerRow_0012"]/td[11]',
         'clase_21': '//*[@id="Grid1ContainerRow_0013"]/td[11]',
@@ -76,18 +75,18 @@ def schedule_clases():
         'clase_24': '//*[@id="Grid1ContainerRow_0016"]/td[11]',
         'clase_25': '//*[@id="Grid1ContainerRow_0017"]/td[11]',
         'clase_26': '//*[@id="Grid1ContainerRow_0018"]/td[11]',
-        'clase_27': '//*[@id="Grid1ContainerRow_0019"]/td[11]',
+        'clase_27': '//*[@id="Grid1ContainerRow_0019"]/td[11]'
     }
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_19']
-    elif current_day == 'Tuesday':
         clase_row = clases['clase_20']
+    elif current_day == 'Tuesday':
+        clase_row = clases['clase_21']
     elif current_day == 'Wednesday':
-        clase_row = clases['quiz_a1']
-    elif current_day == 'Sunday':
         clase_row = clases['clase_22']
+    elif current_day == 'Sunday':
+        clase_row = clases['clase_19']
     else:
         driver.close()
         driver.quit()
