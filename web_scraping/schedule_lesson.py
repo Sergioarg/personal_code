@@ -61,8 +61,8 @@ def schedule_clases():
 
     # Boton de siguiente
     button_siguiente = '//*[@id="Grid1ContainerTbl"]/tfoot/tr/td/div/button[3]'
-    sleep(5)
     wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
+    sleep(5)
     driver.find_element(By.XPATH, button_siguiente).click()
 
     sleep(5)
