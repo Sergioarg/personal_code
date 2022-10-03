@@ -65,26 +65,33 @@ def schedule_clases():
     sleep(5)
     driver.find_element(By.XPATH, button_siguiente).click()
 
+    # Double click of siguiente button
+    sleep(5)
+    driver.find_element(By.XPATH, button_siguiente).click()
+
     sleep(5)
     # Change this XPATH for every class
     clases = {
-        'clase_22': '//*[@id="Grid1ContainerRow_0014"]/td[11]',
-        'clase_23': '//*[@id="Grid1ContainerRow_0015"]/td[11]',
-        'clase_24': '//*[@id="Grid1ContainerRow_0016"]/td[11]',
-        'clase_25': '//*[@id="Grid1ContainerRow_0017"]/td[11]',
-        'clase_26': '//*[@id="Grid1ContainerRow_0018"]/td[11]',
-        'clase_27': '//*[@id="Grid1ContainerRow_0019"]/td[11]'
+        'clase_28': '//*[@id="Grid1ContainerRow_0002"]/td[6]',
+        'clase_29': '//*[@id="Grid1ContainerRow_0003"]/td[11]',
+        'clase_30': '//*[@id="Grid1ContainerRow_0004"]/td[11]',
+        'clase_31': '//*[@id="Grid1ContainerRow_0005"]/td[11]',
+        'clase_32': '//*[@id="Grid1ContainerRow_0006"]/td[11]',
+        'clase_33': '//*[@id="Grid1ContainerRow_0007"]/td[11]',
+        'clase_34': '//*[@id="Grid1ContainerRow_0008"]/td[11]',
+        'clase_35': '//*[@id="Grid1ContainerRow_0009"]/td[11]',
+        'clase_36': '//*[@id="Grid1ContainerRow_0010"]/td[11]'
     }
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_23']
+        clase_row = clases['clase_28']
     elif current_day == 'Tuesday':
-        clase_row = clases['clase_24']
+        clase_row = clases['clase_29']
     elif current_day == 'Wednesday':
-        clase_row = clases['clase_25']
+        clase_row = clases['clase_30']
     elif current_day == 'Sunday':
-        clase_row = clases['clase_22']
+        clase_row = clases['clase_31']
     else:
         driver.close()
         driver.quit()
