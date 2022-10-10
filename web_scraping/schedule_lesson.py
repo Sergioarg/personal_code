@@ -1,6 +1,7 @@
 #!/usr/bin/env -S powershell.exe -c python3
 """ Selenium module for automatization login and logout in tawk. """
 # Selenium
+from msilib.schema import Error
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -38,6 +39,24 @@ def schedule_clases():
     driver.find_element(By.XPATH, confirm_button).click()
 
     # main_page = driver.current_window_handle
+
+    # ! ───────────────────────────────────────────────────────────────────────
+    # ! Code to close advice of simulation
+    try:
+        id_iframe = "gxp0_ifrm"
+        wait.until(EC.presence_of_element_located((By.ID, id_iframe)))
+        iframe = driver.find_element(By.ID, id_iframe)
+        driver.switch_to.frame(iframe)
+
+        sleep(5)
+        id_button_regresar = 'BUTTON1'
+        wait.until(EC.presence_of_element_located((By.ID, id_button_regresar)))
+        driver.find_element(By.ID, id_button_regresar).click()
+
+        driver.switch_to.default_content()
+    except Error:
+        print('Ya o esta el Aviso :)')
+    # ! ───────────────────────────────────────────────────────────────────────
 
     # Change before click on button of programcion
     programcion_button = '//*[@id="IMAGE18"]'
@@ -91,7 +110,7 @@ def schedule_clases():
     elif current_day == 'Wednesday':
         clase_row = clases['clase_30']
     elif current_day == 'Sunday':
-        clase_row = clases['clase_31']
+        clase_row = clases['clase_28']
     else:
         driver.close()
         driver.quit()
