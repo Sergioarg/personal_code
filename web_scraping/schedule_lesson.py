@@ -39,6 +39,25 @@ def schedule_clases():
     driver.find_element(By.XPATH, confirm_button).click()
 
     # main_page = driver.current_window_handle
+
+    # ! ───────────────────────────────────────────────────────────────────────
+    # ! Code to close advice of simulation
+    try:
+        id_iframe = "gxp0_ifrm"
+        wait.until(EC.presence_of_element_located((By.ID, id_iframe)))
+        iframe = driver.find_element(By.ID, id_iframe)
+        driver.switch_to.frame(iframe)
+
+        sleep(5)
+        id_button_regresar = 'BUTTON1'
+        wait.until(EC.presence_of_element_located((By.ID, id_button_regresar)))
+        driver.find_element(By.ID, id_button_regresar).click()
+
+        driver.switch_to.default_content()
+    except:
+        print('Ya o esta el Aviso :)')
+    # ! ───────────────────────────────────────────────────────────────────────
+
     # Change before click on button of programcion
     programcion_button = '//*[@id="IMAGE18"]'
     wait.until(EC.presence_of_element_located((By.XPATH, programcion_button)))
@@ -85,13 +104,13 @@ def schedule_clases():
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_28']
+        clase_row = clases['clase_34']
     elif current_day == 'Tuesday':
-        clase_row = clases['clase_29']
+        clase_row = clases['clase_35']
     elif current_day == 'Wednesday':
-        clase_row = clases['clase_30']
+        clase_row = clases['clase_36']
     elif current_day == 'Sunday':
-        clase_row = clases['clase_28']
+        clase_row = clases['clase_33']
     else:
         driver.close()
         driver.quit()
