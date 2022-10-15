@@ -104,11 +104,11 @@ def schedule_clases():
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_33']
-    elif current_day == 'Tuesday':
-        clase_row = clases['clase_34']
-    elif current_day == 'Wednesday':
         clase_row = clases['clase_35']
+    elif current_day == 'Tuesday':
+        clase_row = clases['clase_33']
+    elif current_day == 'Wednesday':
+        clase_row = clases['clase_34']
     elif current_day == 'Sunday':
         clase_row = clases['clase_36']
     else:
