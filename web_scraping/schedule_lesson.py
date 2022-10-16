@@ -55,7 +55,7 @@ def schedule_clases():
 
         driver.switch_to.default_content()
     except:
-        print('Ya o esta el Aviso :)')
+        print('Ya no esta el Aviso despues de loggin. :)')
     # ! ───────────────────────────────────────────────────────────────────────
 
     # Change before click on button of programcion
@@ -104,13 +104,13 @@ def schedule_clases():
 
     # Check day and select class
     if current_day == 'Monday':
-        clase_row = clases['clase_34']
-    elif current_day == 'Tuesday':
-        clase_row = clases['clase_35']
-    elif current_day == 'Wednesday':
-        clase_row = clases['clase_36']
-    elif current_day == 'Sunday':
         clase_row = clases['clase_33']
+    elif current_day == 'Tuesday':
+        clase_row = clases['clase_34']
+    elif current_day == 'Wednesday':
+        clase_row = clases['clase_35']
+    elif current_day == 'Sunday':
+        clase_row = clases['clase_36']
     else:
         driver.close()
         driver.quit()
