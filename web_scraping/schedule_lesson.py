@@ -54,7 +54,7 @@ def schedule_clases():
         driver.find_element(By.ID, id_button_regresar).click()
 
         driver.switch_to.default_content()
-    except:
+    except RuntimeError:
         print('Ya no esta el Aviso despues de loggin. :)')
     # ! ───────────────────────────────────────────────────────────────────────
 
@@ -103,13 +103,17 @@ def schedule_clases():
     }
 
     # Check day and select class
-    if current_day == 'Monday': # Lunes
+    if current_day == 'Monday':
+        # Lunes
         clase_row = clases['clase_35']
-    elif current_day == 'Tuesday': # Martes
+    elif current_day == 'Tuesday':
+        # Martes
         clase_row = clases['clase_34']
-    elif current_day == 'Wednesday': # Miercoles
-        clase_row = clases['clase_33']
-    elif current_day == 'Sunday': # Domingo
+    elif current_day == 'Wednesday':
+        # Miercoles
+        clase_row = clases['clase_34']
+    elif current_day == 'Sunday':
+        # Domingo
         clase_row = clases['clase_36']
     else:
         driver.close()
@@ -163,9 +167,15 @@ def schedule_clases():
     confirmar_button = '//*[@id="BUTTON1"]'
     driver.find_element(By.XPATH, confirmar_button).click()
 
-    sleep(5)
-    print('Class scheduled')
+    # Check if class could be scheduled.
+    try:
+        warning_message = '//*[@id="TABLE2"]/tbody/tr[3]/td/div/span/div'
+        wait.until(EC.presence_of_element_located((By.XPATH, warning_message)))
+        print('Class could not be scheduled.')
+    except RuntimeError:
+        print('Class successfully scheduled.')
 
+    sleep(5)
     # Close drivers
     driver.close()
     driver.quit()
