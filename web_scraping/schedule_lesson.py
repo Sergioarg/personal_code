@@ -5,6 +5,7 @@ from datetime import datetime as date
 from time import sleep
 
 from selenium import webdriver
+from send_email import send_emial
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -172,6 +173,7 @@ def schedule_clases():
         warning_message = '//*[@id="TABLE2"]/tbody/tr[3]/td/div/span/div'
         wait.until(EC.presence_of_element_located((By.XPATH, warning_message)))
         print('Class could not be scheduled.')
+        send_emial(text_file)
     except RuntimeError:
         print('Class successfully scheduled.')
 
