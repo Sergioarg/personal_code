@@ -92,30 +92,30 @@ def schedule_clases():
     sleep(5)
     # Change this XPATH for every class
     clases = {
-        'clase_28': '//*[@id="Grid1ContainerRow_0002"]/td[6]',
-        'clase_29': '//*[@id="Grid1ContainerRow_0003"]/td[11]',
-        'clase_30': '//*[@id="Grid1ContainerRow_0004"]/td[11]',
-        'clase_31': '//*[@id="Grid1ContainerRow_0005"]/td[11]',
-        'clase_32': '//*[@id="Grid1ContainerRow_0006"]/td[11]',
-        'clase_33': '//*[@id="Grid1ContainerRow_0007"]/td[11]',
-        'clase_34': '//*[@id="Grid1ContainerRow_0008"]/td[11]',
-        'clase_35': '//*[@id="Grid1ContainerRow_0009"]/td[11]',
-        'clase_36': '//*[@id="Grid1ContainerRow_0010"]/td[11]'
+        'clase_37': '//*[@id="Grid1ContainerRow_0013"]/td[6]',
+        'clase_38': '//*[@id="Grid1ContainerRow_0014"]/td[6]',
+        'clase_39': '//*[@id="Grid1ContainerRow_0015"]/td[11]',
+        'clase_40': '//*[@id="Grid1ContainerRow_0016"]/td[11]',
+        'clase_41': '//*[@id="Grid1ContainerRow_0017"]/td[11]',
+        'clase_42': '//*[@id="Grid1ContainerRow_0018"]/td[11]',
+        'clase_43': '//*[@id="Grid1ContainerRow_0019"]/td[11]',
+        'clase_44': '//*[@id="Grid1ContainerRow_0020"]/td[11]',
+        'clase_45': '//*[@id="Grid1ContainerRow_0021"]/td[6]'
     }
 
     # Check day and select class
     if current_day == 'Monday':
         # Lunes
-        clase_row = clases['clase_35']
+        clase_row = clases['clase_37']
     elif current_day == 'Tuesday':
         # Martes
-        clase_row = clases['clase_34']
+        clase_row = clases['clase_38']
     elif current_day == 'Wednesday':
         # Miercoles
-        clase_row = clases['clase_34']
+        clase_row = clases['clase_39']
     elif current_day == 'Sunday':
         # Domingo
-        clase_row = clases['clase_36']
+        clase_row = clases['clase_40']
     else:
         driver.close()
         driver.quit()
