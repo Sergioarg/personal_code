@@ -106,16 +106,16 @@ def schedule_clases():
     # Check day and select class
     if current_day == 'Monday':
         # Lunes
-        clase_row = clases['clase_37']
+        clase_row = clases['clase_42']
     elif current_day == 'Tuesday':
         # Martes
-        clase_row = clases['clase_38']
+        clase_row = clases['clase_43']
     elif current_day == 'Wednesday':
         # Miercoles
-        clase_row = clases['clase_39']
+        clase_row = clases['clase_44']
     elif current_day == 'Sunday':
         # Domingo
-        clase_row = clases['clase_40']
+        clase_row = clases['clase_41']
     else:
         driver.close()
         driver.quit()
