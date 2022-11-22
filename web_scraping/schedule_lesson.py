@@ -90,6 +90,9 @@ def schedule_clases():
     driver.find_element(By.XPATH, button_siguiente).click()
 
     sleep(5)
+    driver.find_element(By.XPATH, button_siguiente).click()
+
+    sleep(5)
     # Change this XPATH for every class
     clases = {
         'clase_46': '//*[@id="Grid1ContainerRow_0004"]/td[6]',
