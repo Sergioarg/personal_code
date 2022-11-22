@@ -172,9 +172,10 @@ def schedule_clases():
     driver.find_element(By.XPATH, confirmar_button).click()
 
     # Check if class could be scheduled.
+
     try:
-        warning_message = '//*[@id="TABLE2"]/tbody/tr[3]/td/div/span/div'
-        wait.until(EC.presence_of_element_located((By.XPATH, warning_message)))
+        warning_message = 'gx-warning-message'
+        wait.until(EC.presence_of_element_located((By.CLASS_NAME, warning_message)))
         print('Class could not be scheduled.')
         driver.close()
         driver.quit()
