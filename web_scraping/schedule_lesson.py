@@ -5,10 +5,11 @@ from datetime import datetime as date
 from time import sleep
 
 from selenium import webdriver
-from send_email import send_emial
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+
+# from send_email import send_emial
 
 # Options for chrome ──────────────────────────────────────────────────────────
 coptions = webdriver.ChromeOptions()
@@ -18,10 +19,12 @@ wait = WebDriverWait(driver, 240)
 
 
 def schedule_clases():
-    # SchoolPack Url ─────────────────────────────────────────────────────────
+    """ Schedule class of Smart acording a specific rows. """
 
+    # SchoolPack Url ──────────────────────────────────────────────────────────
     url = "https://schoolpack.smart.edu.co/idiomas/alumnos.aspx"
-    # Open url. ────────────────────────────────────────────────────────────
+
+    # Open url. ───────────────────────────────────────────────────────────────
     driver.get(url)
 
     user = '1000162785'
@@ -42,7 +45,7 @@ def schedule_clases():
     # main_page = driver.current_window_handle
 
     # ! ───────────────────────────────────────────────────────────────────────
-    # ! Code to close advice of simulation
+    # ! Code to close notice of simulation
     try:
         id_iframe = "gxp0_ifrm"
         wait.until(EC.presence_of_element_located((By.ID, id_iframe)))
@@ -110,7 +113,6 @@ def schedule_clases():
         'clase_63': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
     }
 
-    # current_day = 'Wednesday'
     # Check day and select class
     if current_day == 'Sunday':
         # Domingo
@@ -138,7 +140,7 @@ def schedule_clases():
     asignar_button = '//*[@id="BUTTON1"]'
     driver.find_element(By.XPATH, asignar_button).click()
 
-    # ! Close in case of class may not have been programmed.
+    # ! Close in case of class may not have been scheduled.
     try:
         warning_message = 'gx-warning-message'
         wait.until(EC.presence_of_element_located((By.CLASS_NAME, warning_message)))
