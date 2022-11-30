@@ -92,18 +92,22 @@ def schedule_clases():
     sleep(5)
     driver.find_element(By.XPATH, button_siguiente).click()
 
+    # TODO: Discomment this after the class 60
+    # sleep(5)
+    # driver.find_element(By.XPATH, button_siguiente).click()
+
     sleep(5)
     # Change this XPATH for every class
     clases = {
-        'clase_46': '//*[@id="Grid1ContainerRow_0004"]/td[6]',
-        'clase_47': '//*[@id="Grid1ContainerRow_0005"]/td[6]',
-        'clase_48': '//*[@id="Grid1ContainerRow_0006"]/td[11]',
-        'clase_49': '//*[@id="Grid1ContainerRow_0007"]/td[11]',
-        'clase_50': '//*[@id="Grid1ContainerRow_0008"]/td[11]',
-        'clase_51': '//*[@id="Grid1ContainerRow_0009"]/td[11]',
-        'clase_52': '//*[@id="Grid1ContainerRow_0010"]/td[11]',
-        'clase_53': '//*[@id="Grid1ContainerRow_0011"]/td[6]',
-        'clase_54': '//*[@id="Grid1ContainerRow_0012"]/td[6]',
+        'clase_55': '//*[@id="Grid1ContainerRow_0015"]/td[6]',
+        'clase_56': '//*[@id="Grid1ContainerRow_0016"]/td[11]',
+        'clase_57': '//*[@id="Grid1ContainerRow_0017"]/td[11]',
+        'clase_58': '//*[@id="Grid1ContainerRow_0018"]/td[11]',
+        'clase_59': '//*[@id="Grid1ContainerRow_0019"]/td[11]',
+        'clase_60': '//*[@id="Grid1ContainerRow_0020"]/td[11]',
+        'clase_61': '//*[@id="Grid1ContainerRow_0001"]/td[6]',
+        'clase_62': '//*[@id="Grid1ContainerRow_0002"]/td[6]',
+        'clase_63': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
     }
 
     # Check day and select class
