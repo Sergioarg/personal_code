@@ -160,7 +160,6 @@ def schedule_clases():
         return (1)
 
     # Return to main main page
-    # breakpoint()
     driver.switch_to.default_content()
 
     # SELECT sede, dia and hora of the class
