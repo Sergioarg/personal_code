@@ -147,50 +147,49 @@ def schedule_clases():
         driver.quit()
         # send_emial(text_file)
     except RuntimeError:
+        # Return to main main page
+        driver.switch_to.default_content()
+
+        # SELECT sede, dia and hora of the class
+        second_iframe = '//*[@id="gxp1_ifrm"]'
+        wait.until(EC.presence_of_element_located((By.XPATH, second_iframe)))
+
+        sleep(3)
+        selecion_clases_iframe = driver.find_element(By.XPATH, second_iframe)
+        driver.switch_to.frame(selecion_clases_iframe)
+
+        # Display dropdown of sede
+        sede_dropdown = '//*[@id="vREGCONREG"]'
+        driver.find_element(By.XPATH, sede_dropdown).click()
+
+        # Select CALIMA sede in the dropdown, change the number acording the class
+        calima_option = '//*[@id="vREGCONREG"]/option[14]'
+        driver.find_element(By.XPATH, calima_option).click()
+
+        # Display dropdown of day
+        dia_dropdown = '//*[@id="vDIA"]'
+        driver.find_element(By.XPATH, dia_dropdown).click()
+
+        dia_selection = '//*[@id="vDIA"]/option[2]'
+        driver.find_element(By.XPATH, dia_selection).click()
+        driver.find_element(By.XPATH, dia_selection).click()
+
+        if current_day == 'Wednesday':
+            ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
+        else:
+            ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
+
+        wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
+        driver.find_element(By.XPATH, ultima_clase).click()
+
+        confirmar_button = '//*[@id="BUTTON1"]'
+        driver.find_element(By.XPATH, confirmar_button).click()
+
         print('Class successfully scheduled.')
-
-    # Return to main main page
-    driver.switch_to.default_content()
-
-    # SELECT sede, dia and hora of the class
-    second_iframe = '//*[@id="gxp1_ifrm"]'
-    wait.until(EC.presence_of_element_located((By.XPATH, second_iframe)))
-
-    sleep(3)
-    selecion_clases_iframe = driver.find_element(By.XPATH, second_iframe)
-    driver.switch_to.frame(selecion_clases_iframe)
-
-    # Display dropdown of sede
-    sede_dropdown = '//*[@id="vREGCONREG"]'
-    driver.find_element(By.XPATH, sede_dropdown).click()
-
-    # Select CALIMA sede in the dropdown, change the number acording the class
-    calima_option = '//*[@id="vREGCONREG"]/option[14]'
-    driver.find_element(By.XPATH, calima_option).click()
-
-    # Display dropdown of day
-    dia_dropdown = '//*[@id="vDIA"]'
-    driver.find_element(By.XPATH, dia_dropdown).click()
-
-    dia_selection = '//*[@id="vDIA"]/option[2]'
-    driver.find_element(By.XPATH, dia_selection).click()
-    driver.find_element(By.XPATH, dia_selection).click()
-
-    if current_day == 'Wednesday':
-        ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
-    else:
-        ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
-
-    wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
-    driver.find_element(By.XPATH, ultima_clase).click()
-
-    confirmar_button = '//*[@id="BUTTON1"]'
-    driver.find_element(By.XPATH, confirmar_button).click()
-
-    sleep(5)
-    # Close drivers
-    driver.close()
-    driver.quit()
+        sleep(5)
+        # Close drivers
+        driver.close()
+        driver.quit()
 
 
 if __name__ == '__main__':
