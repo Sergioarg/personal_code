@@ -110,6 +110,7 @@ def schedule_clases():
         'clase_63': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
     }
 
+    # current_day = 'Wednesday'
     # Check day and select class
     if current_day == 'Sunday':
         # Domingo
@@ -136,6 +137,17 @@ def schedule_clases():
     # Click on 'Asignar' button
     asignar_button = '//*[@id="BUTTON1"]'
     driver.find_element(By.XPATH, asignar_button).click()
+
+    # ! Close in case of class may not have been programmed.
+    try:
+        warning_message = 'gx-warning-message'
+        wait.until(EC.presence_of_element_located((By.CLASS_NAME, warning_message)))
+        print('Class could not be scheduled.')
+        driver.close()
+        driver.quit()
+        # send_emial(text_file)
+    except RuntimeError:
+        print('Class successfully scheduled.')
 
     # Return to main main page
     driver.switch_to.default_content()
@@ -174,18 +186,6 @@ def schedule_clases():
 
     confirmar_button = '//*[@id="BUTTON1"]'
     driver.find_element(By.XPATH, confirmar_button).click()
-
-    # Check if class could be scheduled.
-
-    try:
-        warning_message = 'gx-warning-message'
-        wait.until(EC.presence_of_element_located((By.CLASS_NAME, warning_message)))
-        print('Class could not be scheduled.')
-        driver.close()
-        driver.quit()
-        # send_emial(text_file)
-    except RuntimeError:
-        print('Class successfully scheduled.')
 
     sleep(5)
     # Close drivers
