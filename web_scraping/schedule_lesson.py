@@ -21,6 +21,11 @@ wait = WebDriverWait(driver, 240)
 def schedule_clases():
     """ Schedule class of Smart acording a specific rows. """
 
+    Green = '\033[92m'
+    Yellow = '\033[93m'
+    Red = '\033[91m'
+    Reset = '\033[0m'
+
     # SchoolPack Url ──────────────────────────────────────────────────────────
     url = "https://schoolpack.smart.edu.co/idiomas/alumnos.aspx"
 
@@ -44,8 +49,7 @@ def schedule_clases():
 
     # main_page = driver.current_window_handle
 
-    # ! ───────────────────────────────────────────────────────────────────────
-    # ! Code to close notice of simulation
+    # ! Code to close notice of simulation ────────────────────────────────────
     try:
         id_iframe = "gxp0_ifrm"
         wait.until(EC.presence_of_element_located((By.ID, id_iframe)))
@@ -59,7 +63,7 @@ def schedule_clases():
 
         driver.switch_to.default_content()
     except RuntimeError:
-        print('Ya no esta el Aviso despues de loggin. :)')
+        print(f'{Yellow}The login notice is no longer displayed.{Reset}')
     # ! ───────────────────────────────────────────────────────────────────────
 
     # Change before click on button of programcion
@@ -187,7 +191,7 @@ def schedule_clases():
         confirmar_button = '//*[@id="BUTTON1"]'
         driver.find_element(By.XPATH, confirmar_button).click()
 
-        print('Class successfully scheduled.')
+        print(f'{Green}Class successfully scheduled.{Reset}')
         sleep(5)
         # Close drivers
         driver.close()
