@@ -147,7 +147,6 @@ def schedule_clases():
     fail_schedule = None
     # ! Close in case of class may not have been scheduled.
     # try:
-    #     breakpoint()
     #     warning_message = '//*[@id="TABLE2"]/tbody/tr[1]/td/div/span/div'
     #     fail_schedule = EC.presence_of_element_located((By.XPATH, warning_message))
     #     print('Class could not be scheduled.')
