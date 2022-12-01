@@ -120,16 +120,16 @@ def schedule_clases():
     # Check day and select class
     if current_day == 'Sunday':
         # Domingo
-        clase_row = clases['clase_56']
+        clase_row = clases['clase_55']
     elif current_day == 'Monday':
         # Lunes
-        clase_row = clases['clase_57']
+        clase_row = clases['clase_56']
     elif current_day == 'Tuesday':
         # Martes
-        clase_row = clases['clase_58']
+        clase_row = clases['clase_57']
     elif current_day == 'Wednesday':
         # Miercoles
-        clase_row = clases['clase_56']
+        clase_row = clases['clase_58']
     else:
         driver.close()
         driver.quit()
@@ -146,15 +146,15 @@ def schedule_clases():
 
     fail_schedule = None
     # ! Close in case of class may not have been scheduled.
-    try:
-        warning_message = 'gx-warning-message'
-        fail_schedule = wait.until(EC.presence_of_element_located((By.CLASS_NAME, warning_message)))
-        print('Class could not be scheduled.')
-        driver.close()
-        driver.quit()
-        # send_emial(text_file)
-    except RuntimeError:
-        print(f'{Green}Class successfully scheduled.{Reset}')
+    # try:
+    #     breakpoint()
+    #     warning_message = '//*[@id="TABLE2"]/tbody/tr[1]/td/div/span/div'
+    #     fail_schedule = EC.presence_of_element_located((By.XPATH, warning_message))
+    #     print('Class could not be scheduled.')
+    #     driver.close()
+    #     driver.quit()
+    # except ValueError:
+    #     print(f'{Green}Class successfully scheduled.{Reset}')
 
     if fail_schedule is not None:
         return (1)
