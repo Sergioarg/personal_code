@@ -130,7 +130,12 @@ def schedule_clases():
     elif current_day == 'Wednesday':
         # Miercoles
         clase_row = clases['clase_58']
+    # elif current_day == 'Thursday':
+    #     # Jueves
+    #     # clase_row = '//*[@id="Grid1ContainerRow_0013"]/td[6]'
+    #     clase_row = clases['clase_55']
     else:
+        clase_row = None
         driver.close()
         driver.quit()
 
@@ -146,14 +151,14 @@ def schedule_clases():
 
     fail_schedule = None
     # ! Close in case of class may not have been scheduled.
-    # try:
-    #     warning_message = '//*[@id="TABLE2"]/tbody/tr[1]/td/div/span/div'
-    #     fail_schedule = EC.presence_of_element_located((By.XPATH, warning_message))
-    #     print('Class could not be scheduled.')
-    #     driver.close()
-    #     driver.quit()
-    # except ValueError:
-    #     print(f'{Green}Class successfully scheduled.{Reset}')
+    try:
+        warning_message = '//*[@id="TABLE2"]/tbody/tr[1]/td/div/span/div'
+        fail_schedule = wait.until(EC.presence_of_element_located((By.XPATH, warning_message)))
+        print('Class could not be scheduled.')
+        driver.close()
+        driver.quit()
+    except:
+        print(f'{Green}Class successfully scheduled.{Reset}')
 
     if fail_schedule is not None:
         return (1)
