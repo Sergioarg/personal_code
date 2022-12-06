@@ -129,7 +129,7 @@ def schedule_clases():
         clase_row = clases['clase_57']
     elif current_day == 'Wednesday':
         # Miercoles
-        clase_row = clases['clase_58']
+        clase_row = clases['clase_57']
     # elif current_day == 'Thursday':
     #     # Jueves
     #     # clase_row = '//*[@id="Grid1ContainerRow_0013"]/td[6]'
