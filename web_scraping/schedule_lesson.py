@@ -123,10 +123,10 @@ def schedule_clases():
         clase_row = clases['clase_60']
     elif current_day == 'Monday':
         # Lunes
-        clase_row = clases['clase_61']
+        clase_row = clases['clase_62']
     elif current_day == 'Tuesday':
         # Martes
-        clase_row = clases['clase_62']
+        clase_row = clases['clase_61']
     elif current_day == 'Wednesday':
         # Miercoles
         clase_row = clases['clase_63']
