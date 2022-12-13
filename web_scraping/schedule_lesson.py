@@ -99,9 +99,8 @@ def schedule_clases():
     sleep(5)
     driver.find_element(By.XPATH, button_siguiente).click()
 
-    # TODO: Discomment this after the class 60
-    # sleep(5)
-    # driver.find_element(By.XPATH, button_siguiente).click()
+    sleep(5)
+    driver.find_element(By.XPATH, button_siguiente).click()
 
     sleep(5)
     # Change this XPATH for every class
