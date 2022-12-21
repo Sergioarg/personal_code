@@ -116,7 +116,7 @@ def schedule_clases():
     range_xpaths = ["%.2d" % i for i in range(6, 15)]
 
     clases = {
-        f'clase_{clase}': f'//*[@id="Grid1ContainerRow_00{xpath}"]/td[6]'
+        f'clase_{clase}': f'//*[@id="Grid1ContainerRow_00{xpath}"]/td[11]'
         for (clase, xpath) in zip(range_clases, range_xpaths)
     }
 
@@ -129,7 +129,7 @@ def schedule_clases():
         clase_row = clases['clase_66']
     elif current_day == 'Tuesday':
         # Martes
-        clase_row = clases['clase_64']
+        clase_row = clases['clase_65']
     elif current_day == 'Wednesday':
         # Miercoles
         clase_row = clases['clase_64']
@@ -142,10 +142,20 @@ def schedule_clases():
         driver.close()
         driver.quit()
 
-    sleep(3)
-    # Click on class selecte
     wait.until(EC.presence_of_element_located((By.XPATH, clase_row)))
-    driver.find_element(By.XPATH, clase_row).click()
+    clase = driver.find_element(By.XPATH, clase_row)
+    clase.click()
+
+    # TODO: implement logic to select class diniamically
+    # clases['clase_63'] = '//*[@id="Grid1ContainerRow_0003"]/td[11]'
+
+    # for clase_name, clase_xpath in clases.items():
+
+    #     clase = wait.until(EC.presence_of_element_located((By.XPATH, clase_xpath)))
+
+    #     if clase.text == 'Pendiente':
+    #         clase_row = driver.find_element(By.XPATH, clase_xpath)
+    #         break
 
     sleep(5)
     # Click on 'Asignar' button
