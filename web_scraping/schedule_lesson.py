@@ -98,31 +98,41 @@ def schedule_clases():
 
     sleep(5)
     # Change this XPATH for every class
+    # clases = {
+    #     'clase_64': '//*[@id="Grid1ContainerRow_0006"]/td[6]',
+    #     'clase_65': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+    #     'clase_66': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+    #     'clase_67': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+    #     'clase_68': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+    #     'clase_69': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+    #     'clase_70': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+    #     'clase_71': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+    #     'clase_72': '//*[@id="Grid1ContainerRow_0014"]/td[6]',
+    # }
+
+    # ? Create dict comprenhention to clases
+    # ? Note: Change range number as needed
+    range_clases = range(64, 73)
+    range_xpaths = ["%.2d" % i for i in range(6, 15)]
+
     clases = {
-        'clase_55': '//*[@id="Grid1ContainerRow_0015"]/td[6]',
-        'clase_56': '//*[@id="Grid1ContainerRow_0016"]/td[11]',
-        'clase_57': '//*[@id="Grid1ContainerRow_0017"]/td[11]',
-        'clase_58': '//*[@id="Grid1ContainerRow_0018"]/td[11]',
-        'clase_59': '//*[@id="Grid1ContainerRow_0019"]/td[11]',
-        'clase_60': '//*[@id="Grid1ContainerRow_0020"]/td[11]',
-        'clase_61': '//*[@id="Grid1ContainerRow_0001"]/td[6]',
-        'clase_62': '//*[@id="Grid1ContainerRow_0002"]/td[6]',
-        'clase_63': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
+        f'clase_{clase}': f'//*[@id="Grid1ContainerRow_00{xpath}"]/td[6]'
+        for (clase, xpath) in zip(range_clases, range_xpaths)
     }
 
     # Check day and select class
     if current_day == 'Sunday':
         # Domingo
-        clase_row = clases['clase_60']
+        clase_row = clases['clase_65']
     elif current_day == 'Monday':
         # Lunes
-        clase_row = clases['clase_62']
+        clase_row = clases['clase_66']
     elif current_day == 'Tuesday':
         # Martes
-        clase_row = clases['clase_61']
+        clase_row = clases['clase_64']
     elif current_day == 'Wednesday':
         # Miercoles
-        clase_row = clases['clase_63']
+        clase_row = clases['clase_64']
     # elif current_day == 'Thursday':
     #     # Jueves
     #     # clase_row = '//*[@id="Grid1ContainerRow_0013"]/td[6]'
