@@ -97,18 +97,6 @@ def schedule_clases():
         driver.find_element(By.XPATH, button_siguiente).click()
 
     sleep(5)
-    # Change this XPATH for every class
-    # clases = {
-    #     'clase_64': '//*[@id="Grid1ContainerRow_0006"]/td[6]',
-    #     'clase_65': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-    #     'clase_66': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-    #     'clase_67': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-    #     'clase_68': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-    #     'clase_69': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-    #     'clase_70': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-    #     'clase_71': '//*[@id="Grid1ContainerRow_0003"]/td[6]',
-    #     'clase_72': '//*[@id="Grid1ContainerRow_0014"]/td[6]',
-    # }
 
     # ? Create dict comprenhention to clases
     # ? Note: Change range number as needed
@@ -135,7 +123,6 @@ def schedule_clases():
         clase_row = clases['clase_64']
     # elif current_day == 'Thursday':
     #     # Jueves
-    #     # clase_row = '//*[@id="Grid1ContainerRow_0013"]/td[6]'
     #     clase_row = clases['clase_55']
     else:
         clase_row = None
