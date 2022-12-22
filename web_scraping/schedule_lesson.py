@@ -133,7 +133,7 @@ def schedule_clases():
     # clase = driver.find_element(By.XPATH, clase_row)
 
     # TODO: implement logic to select class diniamically
-    clases['clase_63'] = '//*[@id="Grid1ContainerRow_0003"]/td[11]'
+    # clases['clase_63'] = '//*[@id="Grid1ContainerRow_0003"]/td[11]'
 
     for clase_name, clase_xpath in clases.items():
 
