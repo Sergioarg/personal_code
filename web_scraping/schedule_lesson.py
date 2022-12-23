@@ -139,14 +139,15 @@ def schedule_clases():
 
         clase = wait.until(EC.presence_of_element_located((By.XPATH, clase_xpath)))
 
-        if clase.text == 'Pendiente':
+        if clase.text != 'Pendiente':
+            continue
+        else:
             print(f'Clase: {clase_name}')
             clase_row = driver.find_element(By.XPATH, clase_xpath)
             break
-        else:
-            clase_row = None
-            driver.close()
-            driver.quit()
+            # clase_row = None
+            # driver.close()
+            # driver.quit()
 
     clase_row.click()
 
