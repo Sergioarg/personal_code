@@ -108,32 +108,8 @@ def schedule_clases():
         for (clase, xpath) in zip(range_clases, range_xpaths)
     }
 
-    # # Check day and select class
-    # if current_day == 'Sunday':
-    #     # Domingo
-    #     clase_row = clases['clase_65']
-    # elif current_day == 'Monday':
-    #     # Lunes
-    #     clase_row = clases['clase_66']
-    # elif current_day == 'Tuesday':
-    #     # Martes
-    #     clase_row = clases['clase_65']
-    # elif current_day == 'Wednesday':
-    #     # Miercoles
-    #     clase_row = clases['clase_64']
-    # # elif current_day == 'Thursday':
-    # #     # Jueves
-    # #     clase_row = clases['clase_55']
-    # else:
-    #     clase_row = None
-    #     driver.close()
-    #     driver.quit()
-
     # wait.until(EC.presence_of_element_located((By.XPATH, clase_row)))
     # clase = driver.find_element(By.XPATH, clase_row)
-
-    # TODO: implement logic to select class diniamically
-    # clases['clase_63'] = '//*[@id="Grid1ContainerRow_0003"]/td[11]'
 
     for clase_name, clase_xpath in clases.items():
 
