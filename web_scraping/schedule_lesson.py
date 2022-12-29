@@ -48,7 +48,6 @@ def schedule_clases():
     driver.find_element(By.XPATH, confirm_button).click()
 
     # main_page = driver.current_window_handle
-
     # ! Code to close notice of simulation ────────────────────────────────────
     try:
         id_iframe = "gxp0_ifrm"
@@ -92,6 +91,7 @@ def schedule_clases():
 
     repetitions = range(4)
 
+    # ? Repetir veces que se repite dar clink en siguiente
     for rep in repetitions:
         sleep(5)
         driver.find_element(By.XPATH, button_siguiente).click()
@@ -108,9 +108,6 @@ def schedule_clases():
         for (clase, xpath) in zip(range_clases, range_xpaths)
     }
 
-    # wait.until(EC.presence_of_element_located((By.XPATH, clase_row)))
-    # clase = driver.find_element(By.XPATH, clase_row)
-
     for clase_name, clase_xpath in clases.items():
 
         clase = wait.until(EC.presence_of_element_located((By.XPATH, clase_xpath)))
@@ -126,8 +123,8 @@ def schedule_clases():
             # driver.quit()
 
     clase_row.click()
-
     sleep(5)
+
     # Click on 'Asignar' button
     asignar_button = '//*[@id="BUTTON1"]'
     driver.find_element(By.XPATH, asignar_button).click()
