@@ -118,9 +118,6 @@ def schedule_clases():
             print(f'Clase: {clase_name}')
             clase_row = driver.find_element(By.XPATH, clase_xpath)
             break
-            # clase_row = None
-            # driver.close()
-            # driver.quit()
 
     clase_row.click()
     sleep(5)
