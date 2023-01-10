@@ -166,11 +166,9 @@ def schedule_clases():
     driver.find_element(By.XPATH, dia_selection).click()
     driver.find_element(By.XPATH, dia_selection).click()
 
-    # TODO: Check what happend this day
-    if current_day == 'Wednesday':
-        ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
-    else:
-        ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
+    # if current_day == 'Wednesday':
+    #     ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
+    ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
 
     wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
     driver.find_element(By.XPATH, ultima_clase).click()
