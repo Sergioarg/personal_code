@@ -9,7 +9,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-# from send_email import send_emial
 
 # Options for chrome ──────────────────────────────────────────────────────────
 coptions = webdriver.ChromeOptions()
@@ -18,8 +17,36 @@ driver = webdriver.Chrome(options=coptions)
 wait = WebDriverWait(driver, 240)
 
 
-def schedule_clases():
-    """ Schedule class of Smart acording a specific rows. """
+def create_clases_dictioary(start_clases, end_clases, start_xpath, end_xpath):
+    # ? Create dict comprenhention to clases
+    # ? Note: Change range number as needed
+    start_clases, end_clases = 64, 73
+    range_clases = range(64, 73)
+    range_xpaths = ["%.2d" % i for i in range(6, 15)]
+
+    clases = {
+        f'clase_{clase}': f'//*[@id="Grid1ContainerRow_00{xpath}"]/td[11]'
+        for (clase, xpath) in zip(range_clases, range_xpaths)
+    }
+
+
+def click_element(xpath_button: str):
+    """Click on specific button of HTML with XPATH.
+
+    Args:
+        xpath_button (str): XPATH of page to click
+    """
+    wait.until(EC.presence_of_element_located((By.XPATH, xpath_button)))
+    driver.find_element(By.XPATH, xpath_button).click()
+
+
+def schedule_clases(user: str, password: str):
+    """Schedule class in SchoolPack in CALIMA at 7:30 PM
+
+    Args:
+        user (str): user in SchoolPack
+        password (str): password's user of SchoolPack
+    """
 
     Green = '\033[92m'
     Yellow = '\033[93m'
@@ -32,8 +59,8 @@ def schedule_clases():
     # Open url. ───────────────────────────────────────────────────────────────
     driver.get(url)
 
-    user = '1000162785'
-    password = 'SmartSchool'
+    # user = '1000162785'
+    # password = 'SmartSchool'
     current_day = date.today().strftime("%A")
 
     # LOGIN ON SCHOOL PACK  ───────────────────────────────────────────────────
@@ -48,7 +75,7 @@ def schedule_clases():
     driver.find_element(By.XPATH, confirm_button).click()
 
     # main_page = driver.current_window_handle
-    # ! Code to close notice of simulation ────────────────────────────────────
+    # ? Close notice of simulation ────────────────────────────────────────────
     try:
         id_iframe = "gxp0_ifrm"
         wait.until(EC.presence_of_element_located((By.ID, id_iframe)))
@@ -63,21 +90,18 @@ def schedule_clases():
         driver.switch_to.default_content()
     except RuntimeError:
         print(f'{Yellow}The login notice is no longer displayed.{Reset}')
-    # ! ───────────────────────────────────────────────────────────────────────
+    # ? ───────────────────────────────────────────────────────────────────────
 
     # Change before click on button of programcion
     programcion_button = '//*[@id="IMAGE18"]'
-    wait.until(EC.presence_of_element_located((By.XPATH, programcion_button)))
-    driver.find_element(By.XPATH, programcion_button).click()
+    click_element(programcion_button)
 
     # START TO SELECT SPECIFIC CLASS
     study_plan = '//*[@id="W0030Grid1ContainerRow_0001"]'
-    wait.until(EC.presence_of_element_located((By.XPATH, study_plan)))
-    driver.find_element(By.XPATH, study_plan).click()
+    click_element(study_plan)
 
     iniciar_button = '//*[@id="W0030BUTTON1"]'
-    wait.until(EC.presence_of_element_located((By.XPATH, iniciar_button)))
-    driver.find_element(By.XPATH, iniciar_button).click()
+    click_element(iniciar_button)
 
     # Swith to first pop-up "Programar clases"
     first_iframe = '//*[@id="gxp0_ifrm"]'
@@ -131,10 +155,10 @@ def schedule_clases():
     try:
         warning_message = '//*[@id="TABLE2"]/tbody/tr[1]/td/div/span/div'
         fail_schedule = wait.until(EC.presence_of_element_located((By.XPATH, warning_message)))
-        print('Class could not be scheduled.')
+        print(f'{Red}Class could not be scheduled.{Reset}')
         driver.close()
         driver.quit()
-    except:
+    except RuntimeError:
         print(f'{Green}Class successfully scheduled.{Reset}')
 
     if fail_schedule is not None:
@@ -169,9 +193,7 @@ def schedule_clases():
     # if current_day == 'Wednesday':
     #     ultima_clase = '//*[@id="Grid1ContainerRow_0011"]/td[3]'
     ultima_clase = '//*[@id="Grid1ContainerRow_0010"]/td[3]'
-
-    wait.until(EC.presence_of_element_located((By.XPATH, ultima_clase)))
-    driver.find_element(By.XPATH, ultima_clase).click()
+    click_element(ultima_clase)
 
     confirmar_button = '//*[@id="BUTTON1"]'
     driver.find_element(By.XPATH, confirmar_button).click()
@@ -183,4 +205,7 @@ def schedule_clases():
 
 
 if __name__ == '__main__':
-    schedule_clases()
+
+    user = '1000162785'
+    password = 'SmartSchool'
+    schedule_clases(user, password)
