@@ -40,7 +40,7 @@ def click_element(xpath_button: str):
     driver.find_element(By.XPATH, xpath_button).click()
 
 
-def schedule_clases(user: str, password: str):
+def schedule_clases(user: str, password: str, next_reps: int):
     """Schedule class in SchoolPack in CALIMA at 7:30 PM
 
     Args:
@@ -113,7 +113,7 @@ def schedule_clases(user: str, password: str):
     button_siguiente = '//*[@id="Grid1ContainerTbl"]/tfoot/tr/td/div/button[3]'
     wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
 
-    repetitions = range(4)
+    repetitions = range(next_reps)
 
     # ? Repetir veces que se repite dar clink en siguiente
     for rep in repetitions:
@@ -202,10 +202,3 @@ def schedule_clases(user: str, password: str):
     # Close drivers
     driver.close()
     driver.quit()
-
-
-if __name__ == '__main__':
-
-    user = '1000162785'
-    password = 'SmartSchool'
-    schedule_clases(user, password)
