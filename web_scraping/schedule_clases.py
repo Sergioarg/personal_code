@@ -8,26 +8,13 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
+from functions import create_clases_dictionary
 
 # Options for chrome ──────────────────────────────────────────────────────────
 coptions = webdriver.ChromeOptions()
 coptions.add_argument('--ignore-certificate-errors')
 driver = webdriver.Chrome(options=coptions)
 wait = WebDriverWait(driver, 240)
-
-
-def create_clases_dictioary(start_clases, end_clases, start_xpath, end_xpath):
-    # ? Create dict comprenhention to clases
-    # ? Note: Change range number as needed
-    start_clases, end_clases = 64, 73
-    range_clases = range(64, 73)
-    range_xpaths = ["%.2d" % i for i in range(6, 15)]
-
-    clases = {
-        f'clase_{clase}': f'//*[@id="Grid1ContainerRow_00{xpath}"]/td[11]'
-        for (clase, xpath) in zip(range_clases, range_xpaths)
-    }
 
 
 def click_element(xpath_button: str):
@@ -46,6 +33,7 @@ def schedule_clases(user: str, password: str, next_reps: int):
     Args:
         user (str): user in SchoolPack
         password (str): password's user of SchoolPack
+        next_reps (int): number of repetitions to click on next button
     """
 
     Green = '\033[92m'
@@ -58,10 +46,6 @@ def schedule_clases(user: str, password: str, next_reps: int):
 
     # Open url. ───────────────────────────────────────────────────────────────
     driver.get(url)
-
-    # user = '1000162785'
-    # password = 'SmartSchool'
-    current_day = date.today().strftime("%A")
 
     # LOGIN ON SCHOOL PACK  ───────────────────────────────────────────────────
     input_user = '//*[@id="vUSUCOD"]'
@@ -114,7 +98,6 @@ def schedule_clases(user: str, password: str, next_reps: int):
     wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
 
     repetitions = range(next_reps)
-
     # ? Repetir veces que se repite dar clink en siguiente
     for rep in repetitions:
         sleep(5)
@@ -124,24 +107,19 @@ def schedule_clases(user: str, password: str, next_reps: int):
 
     # ? Create dict comprenhention to clases
     # ? Note: Change range number as needed
-    range_clases = range(64, 73)
-    range_xpaths = ["%.2d" % i for i in range(6, 15)]
 
-    clases = {
-        f'clase_{clase}': f'//*[@id="Grid1ContainerRow_00{xpath}"]/td[11]'
-        for (clase, xpath) in zip(range_clases, range_xpaths)
-    }
+    clases = create_clases_dictionary(3, 9, 3, 9)
 
     for clase_name, clase_xpath in clases.items():
 
         clase = wait.until(EC.presence_of_element_located((By.XPATH, clase_xpath)))
 
-        if clase.text != 'Pendiente':
-            continue
-        else:
+        if clase.text == 'Pendiente':
             print(f'Clase: {clase_name}')
             clase_row = driver.find_element(By.XPATH, clase_xpath)
             break
+        # else:
+        #     continue
 
     clase_row.click()
     sleep(5)
