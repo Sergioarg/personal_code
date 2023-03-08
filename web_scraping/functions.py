@@ -4,10 +4,10 @@ from pprint import pprint
 
 
 class Colors:
-    green = '\033[92m'
-    yellow = '\033[93m'
-    red = '\033[91m'
-    reset = '\033[0m'
+    red = "\033[91m"
+    reset = "\033[0m"
+    green = "\033[92m"
+    yellow = "\033[93m"
 
 
 def create_clases_dictionary(
@@ -30,10 +30,10 @@ def create_clases_dictionary(
     range_clases = range(start_clases, end_clases)
     range_xpaths = ["%.2d" % i for i in range(start_xpath, end_xpath)]
 
-    print(f'{c.yellow}The dictionary will look like this{c.reset}')
+    print(f"{c.yellow}The dictionary will look like this{c.reset}")
 
     clases = {
-        f'clase_{clase}': f'//*[@id="Grid1ContainerRow_00{xpath}"]/td[11]'
+        f'clase_{clase}": f"//*[@id="Grid1ContainerRow_00{xpath}"]/td[11]'
         for (clase, xpath) in zip(range_clases, range_xpaths)
     }
     pprint(clases)
