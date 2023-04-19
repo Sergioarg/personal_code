@@ -1,4 +1,4 @@
-name: learn-github-actions
+name: find-breakpoints
 on:
  push:
   paths-ignore:
