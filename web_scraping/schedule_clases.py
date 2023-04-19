@@ -4,11 +4,11 @@
 from datetime import datetime as date
 from time import sleep
 
+from functions import create_clases_dictionary
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from functions import create_clases_dictionary
 
 # Options for chrome ──────────────────────────────────────────────────────────
 coptions = webdriver.ChromeOptions()
@@ -36,10 +36,7 @@ def schedule_clases(user: str, password: str, next_reps: int):
         next_reps (int): number of repetitions to click on next button
     """
 
-    Green = '\033[92m'
-    Yellow = '\033[93m'
-    Red = '\033[91m'
-    Reset = '\033[0m'
+    Green, Yellow, Red, Reset = '\033[92m', '\033[93m', '\033[91m', '\033[0m'
 
     # SchoolPack Url ──────────────────────────────────────────────────────────
     url = "https://schoolpack.smart.edu.co/idiomas/alumnos.aspx"
@@ -97,9 +94,8 @@ def schedule_clases(user: str, password: str, next_reps: int):
     button_siguiente = '//*[@id="Grid1ContainerTbl"]/tfoot/tr/td/div/button[3]'
     wait.until(EC.presence_of_element_located((By.XPATH, button_siguiente)))
 
-    repetitions = range(next_reps)
     # ? Repetir veces que se repite dar clink en siguiente
-    for rep in repetitions:
+    for repetition in range(next_reps):
         sleep(5)
         driver.find_element(By.XPATH, button_siguiente).click()
 
