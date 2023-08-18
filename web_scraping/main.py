@@ -6,5 +6,5 @@ if __name__ == '__main__':
 
     user = '1000162785'
     password = 'SmartSchool'
-    next_reps = 6
+    next_reps = 10
     schedule_clases(user, password, 5)
