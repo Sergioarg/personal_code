@@ -115,26 +115,11 @@ def schedule_clases(user: str, password: str, next_reps: int):
     asignar_button = '//*[@id="BUTTON1"]'
     click_element(asignar_button)
 
-    # fail_schedule = None
-    # ! Close in case of class may not have been scheduled.
-    # try:
-    #     warning_message = '//*[@id="TABLE2"]/tbody/tr[1]/td/div/span/div'
-    #     fail_schedule = wait.until(EC.presence_of_element_located((By.XPATH, warning_message)))
-    #     print(f'{Red}Class could not be scheduled.{Reset}')
-    #     driver.close()
-    #     driver.quit()
-    # except RuntimeError:
-    #     print(f'{Green}Class successfully scheduled.{Reset}')
-
-    # if fail_schedule is not None:
-    #     return (1)
-
     # Return to main main page
     driver.switch_to.default_content()
     # SELECT sede, dia and hora of the class
     second_iframe = '//*[@id="gxp1_ifrm"]'
     wait.until(EC.presence_of_element_located((By.XPATH, second_iframe)))
-
 
     sleep(3)
     selecion_clases_iframe = driver.find_element(By.XPATH, second_iframe)
@@ -155,6 +140,7 @@ def schedule_clases(user: str, password: str, next_reps: int):
     driver.find_element(By.XPATH, confirmar_button).click()
 
     sleep(5)
+
     # Close drivers
     driver.close()
     driver.quit()
