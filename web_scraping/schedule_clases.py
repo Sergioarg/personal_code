@@ -4,7 +4,6 @@
 from datetime import datetime as date
 from time import sleep
 
-from functions import create_clases_dictionary
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -27,7 +26,7 @@ def click_element(xpath_button: str):
     driver.find_element(By.XPATH, xpath_button).click()
 
 
-def schedule_clases(user: str, password: str, next_reps: int):
+def schedule_clases(user: str, password: str):
     """Schedule class in SchoolPack in CALIMA at 7:30 PM
 
     Args:
