@@ -137,8 +137,7 @@ def schedule_clases(user: str, password: str):
 
     confirmar_button = '//*[@id="BUTTON1"]'
     driver.find_element(By.XPATH, confirmar_button).click()
-
-    sleep(5)
+    print(f"Clase: {clase} programada correctamente.")
 
     # Close drivers
     driver.close()
