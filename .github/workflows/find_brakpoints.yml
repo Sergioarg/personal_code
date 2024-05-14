@@ -4,6 +4,7 @@ on:
   paths-ignore:
     - '.github/workflows/**'
     - '../../README.md'
+    - '../../web_scraping/README.md'
 jobs:
   basic-env:
     runs-on: ubuntu-latest
