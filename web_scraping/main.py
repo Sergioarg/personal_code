@@ -8,3 +8,4 @@ if __name__ == '__main__':
     password = 'SmartSchool'
     next_reps = 10
     schedule_clases(user, password)
+    breakpoint()
